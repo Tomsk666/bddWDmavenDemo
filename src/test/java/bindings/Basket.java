@@ -1,6 +1,8 @@
 package bindings;
 
 import cucumber.api.PendingException;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,9 +24,16 @@ public class Basket {
     private WebDriver driver;
     private BaseTest Selenium = new BaseTest();
 
-    public Basket(){
-        Selenium.setup();
-        this.driver = Selenium.getDriver();
+    @Before
+    public void setup(Scenario scenario){
+        System.out.println("Starting - " + scenario.getName());
+        this.driver = Selenium.setup();
+    }
+
+    @After
+    public void teardown(Scenario scenario){
+        System.out.println("Finishing - " + scenario.getName());
+        driver.quit();
     }
 
     @When("^i add an item to the basket$")
@@ -45,8 +54,7 @@ public class Basket {
         WebElement returnToShopLink;
         returnToShopLink= wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Return to shop")));
         returnToShopLink.click();
-        //driver.findElement(By.linkText("Return to shop")).click();
-        driver.quit();
     }
+
 
 }

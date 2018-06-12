@@ -2,6 +2,7 @@ package bindings;
 
 import cucumber.api.PendingException;
 import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,9 +26,16 @@ public class Accounts {
     private BaseTest Selenium = new BaseTest();
     private String email;
 
-    public Accounts(){
-        Selenium.setup();
-        this.driver = Selenium.getDriver();
+    @Before
+    public void setup(Scenario scenario){
+        System.out.println("Starting - " + scenario.getName());
+        this.driver = Selenium.setup();
+    }
+
+    @After
+    public void teardown(Scenario scenario){
+        System.out.println("Finishing - " + scenario.getName());
+        driver.quit();
     }
 
     @When("^i register as a new user with '(.*)' and '(.*)'$")
