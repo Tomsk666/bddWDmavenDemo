@@ -1,6 +1,7 @@
 package bindings;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,15 +15,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 
-public class Basket {
-    WebDriver driver;
+import utilities.BaseTest;
 
-    @Given("^that i am on the shopping website$")
-    public void that_i_am_on_the_shopping_website() throws Throwable {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.get("https://www.edgewordstraining.co.uk/demo-site/");
-        driver.manage().window().maximize();
+public class Basket {
+
+    private WebDriver driver;
+    private BaseTest Selenium = new BaseTest();
+
+    public Basket(){
+        Selenium.setup();
+        this.driver = Selenium.getDriver();
     }
 
     @When("^i add an item to the basket$")
