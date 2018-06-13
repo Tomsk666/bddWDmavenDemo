@@ -17,6 +17,7 @@ public class Hooks {
     public void openBrowser(Scenario scenario) throws MalformedURLException {
         System.out.println("Called openBrowser in " + scenario.getName());
         driver = new ChromeDriver();
+        //driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("https://www.edgewordstraining.co.uk/demo-site/");
         driver.manage().window().maximize();
