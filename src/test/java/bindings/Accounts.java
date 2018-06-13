@@ -1,9 +1,6 @@
 package bindings;
 
 import cucumber.api.PendingException;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,28 +11,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.concurrent.TimeUnit;
-
+import utilities.Hooks;
 import static java.lang.Thread.*;
 import static org.junit.Assert.assertTrue;
-import utilities.BaseTest;
+
 
 public class Accounts {
 
-    private WebDriver driver;
-    private BaseTest Selenium = new BaseTest();
+    public WebDriver driver;
     private String email;
 
-    @Before
-    public void setup(Scenario scenario){
-        System.out.println("Starting - " + scenario.getName());
-        this.driver = Selenium.setup();
-    }
-
-    @After
-    public void teardown(Scenario scenario){
-        System.out.println("Finishing - " + scenario.getName());
-        driver.quit();
+    public Accounts(){
+        driver = Hooks.driver;
     }
 
     @When("^i register as a new user with '(.*)' and '(.*)'$")

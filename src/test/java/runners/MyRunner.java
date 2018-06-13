@@ -13,7 +13,7 @@ import cucumber.deps.com.thoughtworks.xstream.core.Caching;
                 "pretty"},
         tags = {"@runit,@run","~@ignore"},
         features = {"src/test/resources"},
-        glue = {"bindings"}
+        glue = {"bindings","utilities"}
 )
 
 
