@@ -1,7 +1,6 @@
 package bindings;
 
 import cucumber.api.PendingException;
-import cucumber.api.Scenario;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Hooks;
@@ -17,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 public class Basket {
 
-    public WebDriver driver;
+    private WebDriver driver;
 
     public Basket(){
         driver = Hooks.driver;

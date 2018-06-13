@@ -7,18 +7,16 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.Hooks;
 import static java.lang.Thread.*;
 import static org.junit.Assert.assertTrue;
+import utilities.Hooks;
+
 
 
 public class Accounts {
 
-    public WebDriver driver;
+    private WebDriver driver;
     private String email;
 
     public Accounts(){
