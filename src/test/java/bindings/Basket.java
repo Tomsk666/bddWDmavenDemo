@@ -22,7 +22,7 @@ public class Basket {
     }
 
     @When("^i add an item to the basket$")
-    public void i_add_an_item_to_the_basket() throws Throwable {
+    public void i_add_an_item_to_the_basket() {
         driver.findElement(By.cssSelector("#masthead [type='search']")).click();
         driver.findElement(By.cssSelector("#masthead [type='search']")).sendKeys("cap");
         driver.findElement(By.cssSelector("#masthead [type='search']")).sendKeys(Keys.ENTER);
@@ -30,7 +30,7 @@ public class Basket {
     }
 
     @Then("^i can view the item in my basket$")
-    public void i_can_view_the_item_in_my_basket() throws Throwable {
+    public void i_can_view_the_item_in_my_basket() {
         driver.findElement(By.linkText("Cart")).click();
         assertTrue(driver.findElement(By.linkText("Cap")).isDisplayed());
         driver.findElement(By.linkText("×")).click();

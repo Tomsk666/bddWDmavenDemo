@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import static java.lang.Thread.*;
 import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.WebElement;
 import utilities.Hooks;
 
 
@@ -36,11 +38,10 @@ public class Accounts {
         driver.findElement(By.id("reg_password")).sendKeys(pwd);
         driver.findElement(By.id("reg_password")).sendKeys(Keys.TAB);
         sleep(1000);
-        //driver.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/button")).click();
         driver.findElement(By.name("register")).click();
     }
     @Then("^i get a welcome message$")
-    public void i_get_a_welcome_message() throws Throwable {
+    public void i_get_a_welcome_message() {
         String[] parts = email.split("@");
         String uname = parts[0];
 
@@ -64,13 +65,13 @@ public class Accounts {
     }
 
     @Then("^i get an error message that the user is already registered$")
-    public void i_get_an_error_message_that_the_user_is_already_registered() throws Throwable {
+    public void i_get_an_error_message_that_the_user_is_already_registered() {
         String bodyText = driver.findElement(By.tagName("body")).getText();
         assertTrue(bodyText.contains("Error: An account is already registered with your email address"));
     }
 
     @When("^i login with valid credentials '(.*)' and '(.*)'$")
-    public void i_login_with_valid_credentials_user_edgewords_co_uk_and_password_Q(String email, String pwd) throws Throwable {
+    public void i_login_with_valid_credentials_user_edgewords_co_uk_and_password_Q(String email, String pwd) {
         driver.findElement(By.linkText("My account")).click();
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys(email);
@@ -81,7 +82,7 @@ public class Accounts {
     }
 
     @Then("^i get access to My Account$")
-    public void i_get_access_to_My_Account() throws Throwable {    // Write code here that turns the phrase above into concrete actions
+    public void i_get_access_to_My_Account() {    // Write code here that turns the phrase above into concrete actions
             assertTrue(driver.findElement(By.linkText("Dashboard")).isDisplayed());
     }
 
